@@ -26,42 +26,6 @@
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  /* --- Suvekooli staatus ja "täna" märgis ------------------------------ */
-  var days = document.querySelectorAll('.day[data-day]');
-  if (days.length) {
-    var now = new Date();
-    var today = now.getFullYear() + '-' +
-      String(now.getMonth() + 1).padStart(2, '0') + '-' +
-      String(now.getDate()).padStart(2, '0');
-
-    var isToday = false;
-    days.forEach(function (d) {
-      if (d.getAttribute('data-day') === today) {
-        isToday = true;
-        var b = d.querySelector('.day__badge');
-        if (b) { b.hidden = false; b.classList.add('badge--live'); b.textContent = 'Täna'; }
-      }
-    });
-
-    var status = document.getElementById('staatus');
-    if (status) {
-      var start = new Date(2026, 7, 17);
-      var end = new Date(2026, 7, 19, 23, 59);
-      var txt;
-      if (now < start) {
-        var diff = Math.ceil((start - now) / 86400000);
-        txt = diff === 1 ? 'Algab homme' : 'Algab ' + diff + ' päeva pärast';
-      } else if (now <= end) {
-        txt = isToday ? 'Suvekool käib praegu' : 'Suvekool käib';
-      } else {
-        txt = 'Suvekool on toimunud';
-      }
-      status.innerHTML = '<span class="badge ' +
-        (now >= start && now <= end ? 'badge--live' : 'badge--gold') + '">' + txt + '</span>' +
-        '<span>Hotell Pesa, Põlva linn</span><span>17.–19. august 2026</span>';
-    }
-  }
-
   /* --- Logogalerii: suurendus ja lemmikute märkimine -------------------- */
   var cards = Array.prototype.slice.call(document.querySelectorAll('.logo-card'));
   var lb = document.getElementById('lightbox');
