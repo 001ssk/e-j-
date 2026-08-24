@@ -128,7 +128,7 @@ section { padding: 88px 0; }
 }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
 .nav__logo { display: flex; align-items: center; gap: 12px; }
-.nav__logo img { height: 34px; width: auto; }
+.nav__logo-placeholder { display: block; width: 34px; height: 34px; flex: none; }
 .nav__logo span {
   font-family: var(--serif); font-size: 1.16rem; font-weight: 600;
   color: var(--ink); line-height: 1.1; letter-spacing: .01em;
@@ -354,13 +354,17 @@ a.card:hover h3 { color: var(--text-gray); }
 
 /* --- Jalus --- */
 .footer { background: var(--ink); color: #9bc0b0; padding: 68px 0 30px; font-size: .93rem; }
+.footer__grid { grid-template-columns: 0 repeat(3, minmax(0, 1fr)); column-gap: clamp(108px, 11vw, 150px); }
+@media (min-width: 901px) {
+  .footer__grid > div:not(:first-child) { position: relative; left: -45px; }
+}
 .footer h4 { color: var(--white); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 1.1rem; }
 .footer a { color: #c0dacf; }
 .footer a:hover { color: var(--white); }
 .footer ul { list-style: none; margin: 0; padding: 0; }
 .footer li { margin-bottom: .55em; }
 .footer__logo { margin-bottom: 18px; }
-.footer__logo img { height: 40px; width: auto; }
+.footer__logo-placeholder { display: block; width: 40px; height: 40px; }
 .footer__bottom {
   margin-top: 46px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12);
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
